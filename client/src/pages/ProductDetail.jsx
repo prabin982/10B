@@ -132,7 +132,7 @@ const ProductDetail = () => {
                             <div className="p-3 bg-blue-50 text-blue-600 rounded-2xl"><Truck size={24} /></div>
                             <div>
                                 <p className="font-bold">Free Shipping</p>
-                                <p className="text-sm text-gray-500">Orders over $200</p>
+                                <p className="text-sm text-gray-500">Orders over Rs. 5,000</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
