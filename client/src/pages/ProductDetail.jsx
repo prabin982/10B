@@ -79,7 +79,7 @@ const ProductDetail = () => {
                         </div>
                     </div>
 
-                    <p className="text-4xl font-black text-primary-600">${product.price}</p>
+                    <p className="text-4xl font-black text-primary-600">Rs. {product.price}</p>
 
                     <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
                         {product.description}

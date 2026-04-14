@@ -41,30 +41,30 @@ const TeamCard = ({ name, role, bio, image, delay }) => (
 const About = () => {
     const team = [
         {
-            name: "Prabin Raj Dhungana",
-            role: "CEO & CTO",
-            bio: "A visionary technologist from Pulchowk Campus, leading the engineering and strategy at 10B. Passionate about blending high-performance computing with modern fashion aesthetics.",
-            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Prabin",
+            name: "Diwas Adhikari",
+            role: "CEO & Founder",
+            bio: "Driving the vision of 10B from Pulchowk Campus to the global stage. Expert in brand strategy and premium market positioning.",
+            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Diwas",
             delay: 0.1
         },
         {
-            name: "Diwas Adhikari",
-            role: "Event Manager",
-            bio: "The creative force behind 10B's premium events and product launches, ensuring every interaction with the brand is an unforgettable experience.",
-            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Diwas",
+            name: "Prabin Raj Dhungana",
+            role: "CTO & Co-Founder",
+            bio: "The engineering brain behind the platform. Pulchowk engineer ensuring every digital touchpoint of 10B is elite and innovative.",
+            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Prabin",
             delay: 0.2
         },
         {
             name: "Dinesh Subedi",
-            role: "Finance Manager",
-            bio: "Overseeing the financial health and sustainable growth of 10B, ensuring that premium quality is matched with operational excellence.",
+            role: "Finance & Operations",
+            bio: "Ensuring 10B's financial stability and supply chain excellence within the Nepali and international markets.",
             image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Dinesh",
             delay: 0.3
         },
         {
             name: "Samip Benpal",
-            role: "Marketing Manager",
-            bio: "Crafting the story of 10B and connecting our elite footwear to fashion enthusiasts worldwide through innovative digital storytelling.",
+            role: "Lead Marketing",
+            bio: "Mastermind behind 10B's digital presence and community growth, bringing world-class fashion to Nepal.",
             image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Samip",
             delay: 0.4
         }

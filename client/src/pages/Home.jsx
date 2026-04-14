@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, ExternalLink } from 'lucide-react';
 
 const TeamMember = ({ name, role, image, phone }) => (
-    <motion.div 
+    <motion.div
         whileHover={{ y: -10 }}
         className="glass-card rounded-2xl p-6 text-center group"
     >
@@ -23,27 +23,27 @@ const TeamMember = ({ name, role, image, phone }) => (
 const Home = () => {
     const team = [
         {
-            name: "Prabin Raj Dhungana",
-            role: "CEO & CTO",
-            phone: "+977-1234567890",
-            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Prabin"
-        },
-        {
             name: "Diwas Adhikari",
-            role: "Event Manager",
-            phone: "+977-1234567891",
+            role: "CEO & Founder",
+            phone: "+977-9828745004",
             image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Diwas"
         },
         {
+            name: "Prabin Raj Dhungana",
+            role: "CTO & Co-Founder",
+            phone: "+977-9828745004",
+            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Prabin"
+        },
+        {
             name: "Dinesh Subedi",
-            role: "Finance Manager",
-            phone: "+977-1234567892",
+            role: "Finance & Operations",
+            phone: "+977-9828745004",
             image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Dinesh"
         },
         {
-            name: "Samip Benpal",
-            role: "Marketing Manager",
-            phone: "+977-1234567893",
+            name: "Samip nepal",
+            role: "Marketing Head",
+            phone: "+977-9828745004",
             image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Samip"
         }
     ];
@@ -51,7 +51,7 @@ const Home = () => {
     return (
         <div>
             <Hero />
-            
+
             {/* Team Section */}
             <section className="py-24 bg-gray-50 dark:bg-dark-surface/50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -81,9 +81,9 @@ const Home = () => {
                             Join the 10B newsletter and get exclusive access to drops, sales, and fashion insights.
                         </p>
                         <form className="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
-                            <input 
-                                type="email" 
-                                placeholder="Enter your email" 
+                            <input
+                                type="email"
+                                placeholder="Enter your email"
                                 className="premium-input flex-1"
                             />
                             <button className="btn btn-primary whitespace-nowrap">Subscribe Now</button>

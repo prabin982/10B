@@ -98,7 +98,7 @@ const AdminDashboard = () => {
                                     </div>
                                 </td>
                                 <td className="px-6 py-4">{product.category}</td>
-                                <td className="px-6 py-4 font-bold text-primary-600">${product.price}</td>
+                                <td className="px-6 py-4 font-bold text-primary-600">Rs. {product.price}</td>
                                 <td className="px-6 py-4">
                                     <span className={`px-3 py-1 rounded-full text-xs font-bold ${product.stock > 0 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
                                         {product.stock} in stock
@@ -167,7 +167,7 @@ const AdminDashboard = () => {
                                         </select>
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-sm font-bold text-gray-500 uppercase">Price ($)</label>
+                                        <label className="text-sm font-bold text-gray-500 uppercase">Price (Rs.)</label>
                                         <input 
                                             type="number"
                                             required

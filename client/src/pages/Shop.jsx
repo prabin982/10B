@@ -101,7 +101,7 @@ const Shop = () => {
                                                     <p className="text-sm text-gray-500 font-medium mb-1">{product.category}</p>
                                                     <h3 className="text-xl font-bold group-hover:text-primary-600 transition-colors">{product.name}</h3>
                                                 </div>
-                                                <p className="text-xl font-black text-primary-600">${product.price}</p>
+                                                <p className="text-xl font-black text-primary-600">Rs. {product.price}</p>
                                             </div>
                                         </div>
                                     </Link>

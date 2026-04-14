@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
     const { name, email, phone, password, adminCode } = req.body;
     
     let userRole = 'user';
-    if (adminCode === '10B_ELITE_2026') {
+    if (adminCode === 'prabin@1234') {
         userRole = 'organizer';
     }
 

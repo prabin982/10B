@@ -9,7 +9,7 @@ const Cart = () => {
     const navigate = useNavigate();
 
     const subtotal = cartItems.reduce((acc, item) => acc + item.qty * item.price, 0);
-    const shipping = subtotal > 200 ? 0 : 20;
+    const shipping = subtotal > 5000 ? 0 : 150;
     const total = subtotal + shipping;
 
     if (cartItems.length === 0) {
@@ -48,7 +48,7 @@ const Cart = () => {
                                 <div>
                                     <h3 className="text-2xl font-bold mb-1">{item.name}</h3>
                                     <p className="text-gray-500 font-bold mb-2">Size: <span className="text-primary-600">{item.size}</span></p>
-                                    <p className="text-xl font-black text-primary-600">${item.price}</p>
+                                    <p className="text-xl font-black text-primary-600">Rs. {item.price}</p>
                                 </div>
 
                                 <div className="flex items-center gap-12">
@@ -80,18 +80,18 @@ const Cart = () => {
                     <div className="glass-card rounded-[3rem] p-10 sticky top-32">
                         <h3 className="text-2xl font-bold mb-8">Order Summary</h3>
                         <div className="space-y-6 mb-8 text-lg">
-                            <div className="flex justify-between">
+                             <div className="flex justify-between">
                                 <span className="text-gray-500">Subtotal</span>
-                                <span className="font-bold">${subtotal.toFixed(2)}</span>
+                                <span className="font-bold">Rs. {subtotal.toLocaleString()}</span>
                             </div>
                             <div className="flex justify-between">
                                 <span className="text-gray-500">Shipping</span>
-                                <span className="font-bold">{shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}</span>
+                                <span className="font-bold">{shipping === 0 ? 'FREE' : `Rs. ${shipping}`}</span>
                             </div>
                             <div className="h-px bg-gray-100 dark:bg-dark-border" />
                             <div className="flex justify-between text-2xl font-black">
                                 <span>Total</span>
-                                <span className="text-primary-600">${total.toFixed(2)}</span>
+                                <span className="text-primary-600">Rs. {total.toLocaleString()}</span>
                             </div>
                         </div>
 
