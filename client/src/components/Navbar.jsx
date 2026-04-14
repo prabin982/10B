@@ -89,7 +89,7 @@ const Navbar = () => {
                     <Link to="/shop" onClick={() => setIsOpen(false)} className="block font-medium">Shop</Link>
                     <Link to="/about" onClick={() => setIsOpen(false)} className="block font-medium">Our Team</Link>
                     <Link to="/contact" onClick={() => setIsOpen(false)} className="block font-medium">Contact</Link>
-                    {userInfo?.role === 'admin' && (
+                    {(userInfo?.role === 'admin' || userInfo?.role === 'organizer') && (
                         <Link to="/admin" onClick={() => setIsOpen(false)} className="block font-bold text-primary-600">Admin Panel</Link>
                     )}
                 </div>

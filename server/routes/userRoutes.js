@@ -13,7 +13,12 @@ const generateToken = (id) => {
 // @desc    Register a new user
 // @route   POST /api/users
 router.post('/', async (req, res) => {
-    const { name, email, phone, password, role } = req.body;
+    const { name, email, phone, password, adminCode } = req.body;
+    
+    let userRole = 'user';
+    if (adminCode === '10B_ELITE_2026') {
+        userRole = 'organizer';
+    }
 
     const userExists = await User.findOne({ where: { email } });
 
@@ -26,7 +31,7 @@ router.post('/', async (req, res) => {
         email,
         phone,
         password,
-        role: role || 'user',
+        role: userRole,
     });
 
     if (user) {
