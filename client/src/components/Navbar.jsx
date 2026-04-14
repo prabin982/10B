@@ -42,6 +42,9 @@ const Navbar = () => {
                         <Link to="/shop" className="font-medium hover:text-primary-600 transition-colors">Shop</Link>
                         <Link to="/about" className="font-medium hover:text-primary-600 transition-colors">Our Team</Link>
                         <Link to="/contact" className="font-medium hover:text-primary-600 transition-colors">Contact</Link>
+                        {(userInfo?.role === 'admin' || userInfo?.role === 'organizer') && (
+                            <Link to="/admin" className="font-bold text-primary-600 flex items-center gap-1.5 bg-primary-50 dark:bg-primary-900/20 px-4 py-1.5 rounded-full text-sm">🛡️ Control Center</Link>
+                        )}
                     </div>
 
                     {/* Actions */}
@@ -90,7 +93,10 @@ const Navbar = () => {
                     <Link to="/about" onClick={() => setIsOpen(false)} className="block font-medium">Our Team</Link>
                     <Link to="/contact" onClick={() => setIsOpen(false)} className="block font-medium">Contact</Link>
                     {(userInfo?.role === 'admin' || userInfo?.role === 'organizer') && (
-                        <Link to="/admin" onClick={() => setIsOpen(false)} className="block font-bold text-primary-600">Admin Panel</Link>
+                        <Link to="/admin" onClick={() => setIsOpen(false)} className="block font-bold text-primary-600">🛡️ Control Center</Link>
+                    )}
+                    {userInfo && (
+                        <Link to="/profile" onClick={() => setIsOpen(false)} className="block font-medium">My Orders</Link>
                     )}
                 </div>
             )}

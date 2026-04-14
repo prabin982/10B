@@ -6,13 +6,13 @@ import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import AdminDashboard from './pages/AdminDashboard';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import AdminAuth from './pages/AdminAuth';
 import useAuthStore from './store/authStore';
 
 const ProtectedRoute = ({ children, isAdmin = false }) => {
@@ -44,8 +44,13 @@ function App() {
                     <Route path="/register" element={<Register />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<Contact />} />
-                    <Route path="/admin-auth" element={<AdminAuth />} />
                     
+                    <Route path="/checkout" element={
+                        <ProtectedRoute>
+                            <Checkout />
+                        </ProtectedRoute>
+                    } />
+
                     <Route path="/profile" element={
                         <ProtectedRoute>
                             <Profile />

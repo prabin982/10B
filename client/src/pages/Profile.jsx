@@ -105,7 +105,7 @@ const Profile = () => {
                                             </div>
                                         </div>
                                         <div className="text-right">
-                                            <p className="font-black text-lg">${order.totalPrice.toFixed(2)}</p>
+                                            <p className="font-black text-lg">Rs. {order.totalPrice?.toLocaleString()}</p>
                                             <p className={`text-xs font-bold uppercase ${order.isDelivered ? 'text-green-500' : 'text-orange-500'}`}>
                                                 {order.isDelivered ? 'Delivered' : 'Processing'}
                                             </p>

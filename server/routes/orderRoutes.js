@@ -17,17 +17,30 @@ router.post('/', protect, async (req, res) => {
     if (orderItems && orderItems.length === 0) {
         res.status(400).json({ message: 'No order items' });
         return;
-    } else {
-        const order = await Order.create({
-            userId: req.user.id,
-            orderItems,
-            shippingAddress,
-            paymentMethod,
-            totalPrice,
-        });
-
-        res.status(201).json({ ...order.toJSON(), _id: order.id });
     }
+
+    const order = await Order.create({
+        userId: req.user.id,
+        orderItems,
+        shippingAddress,
+        paymentMethod,
+        totalPrice,
+    });
+
+    // Emit real-time notification to admin
+    const io = req.app.get('socketio');
+    io.emit('new_order', {
+        _id: order.id,
+        customerName: req.user.name,
+        customerEmail: req.user.email,
+        customerPhone: req.user.phone,
+        totalPrice,
+        itemCount: orderItems.length,
+        shippingAddress,
+        createdAt: order.createdAt
+    });
+
+    res.status(201).json({ ...order.toJSON(), _id: order.id });
 });
 
 // @desc    Get logged in user orders
@@ -50,7 +63,7 @@ router.get('/myorders', protect, async (req, res) => {
 // @route   GET /api/orders
 router.get('/', protect, admin, async (req, res) => {
     const orders = await Order.findAll({
-        include: [{ model: User, attributes: ['id', 'name', 'email'] }],
+        include: [{ model: User, attributes: ['id', 'name', 'email', 'phone'] }],
         order: [['createdAt', 'DESC']]
     });
     
@@ -60,6 +73,22 @@ router.get('/', protect, admin, async (req, res) => {
     }));
     
     res.json(transformedOrders);
+});
+
+// @desc    Update order status (Admin only)
+// @route   PUT /api/orders/:id
+router.put('/:id', protect, admin, async (req, res) => {
+    const order = await Order.findByPk(req.params.id);
+    
+    if (order) {
+        order.isDelivered = req.body.isDelivered ?? order.isDelivered;
+        order.isPaid = req.body.isPaid ?? order.isPaid;
+        
+        const updated = await order.save();
+        res.json({ ...updated.toJSON(), _id: updated.id });
+    } else {
+        res.status(404).json({ message: 'Order not found' });
+    }
 });
 
 module.exports = router;

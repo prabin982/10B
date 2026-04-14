@@ -96,7 +96,7 @@ const Cart = () => {
                         </div>
 
                         <button 
-                            onClick={() => alert('Proceeding to Checkout...')}
+                            onClick={() => navigate('/checkout')}
                             className="btn btn-primary w-full py-5 text-xl flex items-center justify-center gap-3 shadow-2xl"
                         >
                             Checkout Now <ArrowRight size={24} />
