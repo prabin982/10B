@@ -2,7 +2,24 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const { protect } = require('../middleware/authMiddleware');
+const { protect, admin } = require('../middleware/authMiddleware');
+
+// @desc    Get all users (Admin only)
+// @route   GET /api/users
+router.get('/', protect, admin, async (req, res) => {
+    const users = await User.findAll({
+        attributes: ['id', 'name', 'email', 'phone', 'role', 'createdAt'],
+        order: [['createdAt', 'DESC']]
+    });
+    
+    // Alias ID for frontend
+    const transformedUsers = users.map(u => ({
+        ...u.toJSON(),
+        _id: u.id
+    }));
+    
+    res.json(transformedUsers);
+});
 
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
