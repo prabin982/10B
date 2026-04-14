@@ -1,4 +1,4 @@
-# 10B - Premium Fashion & Footwear Platform
+# 10D - Premium Fashion & Footwear Platform
 
 A production-ready full-stack e-commerce platform for elite fashion, featuring real-time inventory management and a modern, high-performance UI.
 
@@ -24,7 +24,7 @@ A production-ready full-stack e-commerce platform for elite fashion, featuring r
 
 ### 1. Requirements
 - Node.js installed
-- PostgreSQL running locally (default: `postgres://postgres:password@localhost:5432/10B`)
+- PostgreSQL running locally (default: `postgres://postgres:password@localhost:5432/10D`)
 
 ### 2. Backend Setup
 ```bash

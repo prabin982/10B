@@ -6,7 +6,7 @@ const Team = require('./models/Team');
 const products = [
     {
         name: 'Apex Speed Runner',
-        description: 'Elite footwear designed for peak performance. Featuring 10B cloud-foam technology.',
+        description: 'Elite footwear designed for peak performance. Featuring 10D cloud-foam technology.',
         category: 'Shoes',
         price: 18000,
         stock: 50,
@@ -31,28 +31,28 @@ const teamData = [
     {
         name: "Diwas Adhikari",
         role: "CEO & Founder",
-        bio: "Driving the global vision of 10B. A visionary entrepreneur leading the brand strategy and elite market expansion.",
+        bio: "Driving the global vision of 10D. A visionary entrepreneur leading the brand strategy and elite market expansion.",
         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Diwas",
         order: 1
     },
     {
         name: "Prabin Raj Dhungana",
         role: "CTO & Co-Founder",
-        bio: "Technological mastermind from Pulchowk Campus. Engineering the high-performance digital infrastructure of 10B.",
+        bio: "Technological mastermind from Pulchowk Campus. Engineering the high-performance digital infrastructure of 10D.",
         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Prabin",
         order: 2
     },
     {
         name: "Dinesh Subedi",
         role: "Finance & Operations",
-        bio: "Strategizing financial growth and supply chain excellence to ensure 10B quality reaches every elite enthusiast.",
+        bio: "Strategizing financial growth and supply chain excellence to ensure 10D quality reaches every elite enthusiast.",
         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Dinesh",
         order: 3
     },
     {
         name: "Samip Benpal",
         role: "Marketing Head",
-        bio: "Crafting the digital narrative of 10B, connecting elite footwear with the modern community through storytelling.",
+        bio: "Crafting the digital narrative of 10D, connecting elite footwear with the modern community through storytelling.",
         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Samip",
         order: 4
     }

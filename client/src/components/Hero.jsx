@@ -25,7 +25,7 @@ const Hero = () => {
             Step Into <span className="bg-gradient-to-r from-primary-600 to-indigo-600 bg-clip-text text-transparent">Elite</span> Fashion
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-lg">
-            Experience the perfect blend of performance and style with 10B. 
+            Experience the perfect blend of performance and style with 10D. 
             Crafted for those who dare to move differently.
           </p>
           <div className="flex items-center gap-6">

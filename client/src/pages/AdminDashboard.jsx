@@ -141,7 +141,7 @@ const AdminDashboard = () => {
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
                 <div>
                     <h1 className="text-5xl font-black mb-2">Control Center</h1>
-                    <p className="text-gray-500">Manage your entire 10B ecosystem</p>
+                    <p className="text-gray-500 font-medium">Control the 10D ecosystem.</p>
                 </div>
             </div>
 

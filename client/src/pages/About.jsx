@@ -73,7 +73,7 @@ const About = () => {
                     transition={{ delay: 0.3 }}
                     className="text-2xl text-gray-500 dark:text-gray-400 leading-relaxed"
                 >
-                    10B isn't just a brand; it's a movement born in Nepal, 
+                    10D isn't just a brand; it's a movement born in Nepal, 
                     dedicated to those who value craftsmanship, exclusivity, and technological innovation.
                 </motion.p>
             </div>
@@ -103,9 +103,9 @@ const About = () => {
                     sustainable practices, and elite design principles.
                 </p>
                 <div className="mt-12 flex justify-center gap-12 text-7xl font-black opacity-10 select-none">
-                    <span>10B</span>
-                    <span>10B</span>
-                    <span>10B</span>
+                    <span>10D</span>
+                    <span>10D</span>
+                    <span>10D</span>
                 </div>
             </div>
         </div>

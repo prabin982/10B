@@ -10,7 +10,7 @@ const Footer = () => {
                     {/* Brand */}
                     <div className="space-y-6">
                         <Link to="/" className="text-4xl font-black bg-gradient-to-r from-primary-600 to-indigo-600 bg-clip-text text-transparent">
-                            10B
+                            10D
                         </Link>
                         <p className="text-gray-500 leading-relaxed">
                             Elite fashion for the modern era. Designed at Pulchowk Campus, worn globally. 
@@ -67,7 +67,7 @@ const Footer = () => {
 
                 <div className="pt-12 border-t border-gray-100 dark:border-dark-border flex flex-col md:flex-row justify-between items-center gap-6">
                     <p className="text-gray-400 font-medium">
-                        © 2026 <span className="text-primary-600 font-bold">10B Ltd</span>. All rights reserved.
+                        © 2026 <span className="text-primary-600 font-bold">10D Ltd</span>. All rights reserved.
                     </p>
                     <div className="flex gap-10 text-sm font-bold text-gray-400 uppercase tracking-widest">
                         <a href="#" className="hover:text-primary-600">Privacy Policy</a>

@@ -81,7 +81,7 @@ const AdminAuth = () => {
                     </form>
 
                     <p className="mt-8 text-center text-xs text-gray-400 font-medium leading-relaxed">
-                        This is a restricted area. All access attempts are logged and monitored by the 10B security infrastructure.
+                        This is a restricted area. All access attempts are logged and monitored by the 10D security infrastructure.
                     </p>
                 </div>
             </motion.div>

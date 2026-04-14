@@ -35,7 +35,7 @@ const Register = () => {
             >
                 <div className="text-center mb-10">
                     <h1 className="text-5xl font-black mb-4">Create Account</h1>
-                    <p className="text-gray-500">Join 10B and start your fashion journey</p>
+                    <p className="text-gray-500">Join 10D and start your fashion journey</p>
                 </div>
 
                 <div className="glass-card rounded-[3rem] p-10 md:p-12 shadow-2xl">

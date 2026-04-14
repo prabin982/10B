@@ -102,7 +102,7 @@ const Cart = () => {
                             Checkout Now <ArrowRight size={24} />
                         </button>
 
-                        <p className="text-sm text-center text-gray-400 mt-6">Secure encrypted checkout powered by 10B Payments</p>
+                        <p className="text-sm text-center text-gray-400 mt-6">Secure encrypted checkout powered by 10D Payments</p>
                     </div>
                 </div>
             </div>
