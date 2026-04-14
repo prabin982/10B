@@ -4,7 +4,7 @@ const cors = require('cors');
 const http = require('http');
 const { Server } = require('socket.io');
 const path = require('path');
-const connectDB = require('./config/db');
+const { connectDB } = require('./config/db');
 
 // Load env vars
 dotenv.config();
