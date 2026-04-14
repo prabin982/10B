@@ -9,8 +9,7 @@ const Register = () => {
         name: '',
         email: '',
         phone: '',
-        password: '',
-        adminCode: ''
+        password: ''
     });
     
     const { register, userInfo, loading, error } = useAuthStore();
@@ -108,20 +107,6 @@ const Register = () => {
                                 />
                             </div>
                             <p className="text-[10px] text-gray-400 px-1 italic">Must be at least 6 characters long</p>
-                        </div>
-
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest px-1">Admin Code (Optional)</label>
-                            <div className="relative">
-                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-                                <input 
-                                    type="text" 
-                                    className="premium-input pl-12"
-                                    placeholder="Enter secret code for organizer access"
-                                    value={formData.adminCode}
-                                    onChange={(e) => setFormData({...formData, adminCode: e.target.value})}
-                                />
-                            </div>
                         </div>
 
                         <div className="pt-4">

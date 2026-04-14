@@ -30,12 +30,9 @@ const generateToken = (id) => {
 // @desc    Register a new user
 // @route   POST /api/users
 router.post('/', async (req, res) => {
-    const { name, email, phone, password, adminCode } = req.body;
+    const { name, email, phone, password } = req.body;
     
     let userRole = 'user';
-    if (adminCode === 'prabin@1234') {
-        userRole = 'organizer';
-    }
 
     const userExists = await User.findOne({ where: { email } });
 
@@ -82,6 +79,25 @@ router.post('/login', async (req, res) => {
         });
     } else {
         res.status(401).json({ message: 'Invalid email or password' });
+    }
+});
+
+// @desc    Upgrade user to organizer using secret key
+// @route   POST /api/users/upgrade
+router.post('/upgrade', protect, async (req, res) => {
+    const { secretKey } = req.body;
+    
+    if (secretKey === 'prabin@1234') {
+        const user = await User.findByPk(req.user.id);
+        if (user) {
+            user.role = 'organizer';
+            await user.save();
+            res.json({ message: 'Success! You are now an organizer.', role: 'organizer' });
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } else {
+        res.status(401).json({ message: 'Invalid admin secret key' });
     }
 });
 

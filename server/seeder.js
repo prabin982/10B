@@ -1,13 +1,14 @@
 const { connectDB, sequelize } = require('./config/db');
 const Product = require('./models/Product');
 const User = require('./models/User');
+const Team = require('./models/Team');
 
 const products = [
     {
         name: 'Apex Speed Runner',
-        description: 'Engineered for maximum velocity and comfort. Featuring the 10B cloud-foam technology for a weightless experience.',
+        description: 'Elite footwear designed for peak performance. Featuring 10B cloud-foam technology.',
         category: 'Shoes',
-        price: 189.99,
+        price: 18000,
         stock: 50,
         sizes: ['7', '8', '9', '10', '11'],
         featured: true,
@@ -16,32 +17,44 @@ const products = [
     },
     {
         name: 'Midnight Stealth Jacket',
-        description: 'Weather-resistant and incredibly stylish. The perfect companion for urban explorers.',
+        description: 'Premium weather-resistant tech-wear for the modern explorer.',
         category: 'Clothing',
-        price: 129.99,
+        price: 12500,
         stock: 30,
         sizes: ['S', 'M', 'L', 'XL'],
         featured: true,
         images: ['https://images.unsplash.com/photo-1591047139829-d91aecb6caea']
+    }
+];
+
+const teamData = [
+    {
+        name: "Diwas Adhikari",
+        role: "CEO & Founder",
+        bio: "Driving the global vision of 10B. A visionary entrepreneur leading the brand strategy and elite market expansion.",
+        image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Diwas",
+        order: 1
     },
     {
-        name: 'Quantum Knit Tee',
-        description: 'Breathable premium cotton with a minimalist 10B logo. Everyday comfort, redefined.',
-        category: 'Clothing',
-        price: 45.00,
-        stock: 100,
-        sizes: ['S', 'M', 'L', 'XL'],
-        images: ['https://images.unsplash.com/photo-1521572267360-ee0c2909d518']
+        name: "Prabin Raj Dhungana",
+        role: "CTO & Co-Founder",
+        bio: "Technological mastermind from Pulchowk Campus. Engineering the high-performance digital infrastructure of 10B.",
+        image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Prabin",
+        order: 2
     },
     {
-        name: 'Infinity Bound Sneaker',
-        description: 'A fusion of basketball heritage and modern street style. Bold, heavy, and iconic.',
-        category: 'Shoes',
-        price: 210.00,
-        stock: 25,
-        sizes: ['8', '9', '10', '11', '12'],
-        trending: true,
-        images: ['https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa']
+        name: "Dinesh Subedi",
+        role: "Finance & Operations",
+        bio: "Strategizing financial growth and supply chain excellence to ensure 10B quality reaches every elite enthusiast.",
+        image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Dinesh",
+        order: 3
+    },
+    {
+        name: "Samip Benpal",
+        role: "Marketing Head",
+        bio: "Crafting the digital narrative of 10B, connecting elite footwear with the modern community through storytelling.",
+        image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Samip",
+        order: 4
     }
 ];
 
@@ -49,12 +62,13 @@ const importData = async () => {
     try {
         await connectDB();
         
-        // Clear existing products
         await Product.destroy({ where: {}, truncate: { cascade: true } });
+        await Team.destroy({ where: {}, truncate: { cascade: true } });
         
         await Product.bulkCreate(products);
+        await Team.bulkCreate(teamData);
         
-        console.log('Data Imported successfully into PostgreSQL!');
+        console.log('Seeded data successfully!');
         process.exit();
     } catch (error) {
         console.error(`${error}`);

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, ExternalLink } from 'lucide-react';
+import { Mail, Github, Linkedin, Loader2 } from 'lucide-react';
+import api from '../services/api';
 
 const TeamCard = ({ name, role, bio, image, delay }) => (
     <motion.div 
@@ -39,36 +40,22 @@ const TeamCard = ({ name, role, bio, image, delay }) => (
 );
 
 const About = () => {
-    const team = [
-        {
-            name: "Diwas Adhikari",
-            role: "CEO & Founder",
-            bio: "Driving the vision of 10B from Pulchowk Campus to the global stage. Expert in brand strategy and premium market positioning.",
-            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Diwas",
-            delay: 0.1
-        },
-        {
-            name: "Prabin Raj Dhungana",
-            role: "CTO & Co-Founder",
-            bio: "The engineering brain behind the platform. Pulchowk engineer ensuring every digital touchpoint of 10B is elite and innovative.",
-            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Prabin",
-            delay: 0.2
-        },
-        {
-            name: "Dinesh Subedi",
-            role: "Finance & Operations",
-            bio: "Ensuring 10B's financial stability and supply chain excellence within the Nepali and international markets.",
-            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Dinesh",
-            delay: 0.3
-        },
-        {
-            name: "Samip Benpal",
-            role: "Lead Marketing",
-            bio: "Mastermind behind 10B's digital presence and community growth, bringing world-class fashion to Nepal.",
-            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Samip",
-            delay: 0.4
-        }
-    ];
+    const [team, setTeam] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchTeam = async () => {
+            try {
+                const { data } = await api.get('/team');
+                setTeam(data);
+                setLoading(false);
+            } catch (error) {
+                console.error(error);
+                setLoading(false);
+            }
+        };
+        fetchTeam();
+    }, []);
 
     return (
         <div className="max-w-7xl mx-auto px-4 py-24">
@@ -86,7 +73,7 @@ const About = () => {
                     transition={{ delay: 0.3 }}
                     className="text-2xl text-gray-500 dark:text-gray-400 leading-relaxed"
                 >
-                    10B isn't just a brand; it's a movement born out of the Pulchowk Campus, 
+                    10B isn't just a brand; it's a movement born in Nepal, 
                     dedicated to those who value craftsmanship, exclusivity, and technological innovation.
                 </motion.p>
             </div>
@@ -96,11 +83,17 @@ const About = () => {
                     The Leadership <div className="h-px bg-gray-200 flex-1" />
                 </h2>
                 
-                <div className="grid grid-cols-1 gap-12">
-                    {team.map((member, i) => (
-                        <TeamCard key={i} {...member} />
-                    ))}
-                </div>
+                {loading ? (
+                    <div className="flex justify-center py-20">
+                        <Loader2 className="animate-spin text-primary-600" size={48} />
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-1 gap-12">
+                        {team.map((member, i) => (
+                            <TeamCard key={member.id} {...member} delay={i * 0.1} />
+                        ))}
+                    </div>
+                )}
             </div>
 
             <div className="mt-32 glass-card rounded-[4rem] p-16 md:p-24 text-center">

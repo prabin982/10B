@@ -1,94 +1,78 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Hero from '../components/Hero';
 import { motion } from 'framer-motion';
-import { Mail, Phone, ExternalLink } from 'lucide-react';
+import { Mail, Phone, Loader2 } from 'lucide-react';
+import api from '../services/api';
 
 const TeamMember = ({ name, role, image, phone }) => (
-    <motion.div
+    <motion.div 
         whileHover={{ y: -10 }}
-        className="glass-card rounded-2xl p-6 text-center group"
+        className="glass-card rounded-[2.5rem] p-8 text-center group transition-all duration-500"
     >
-        <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary-100 group-hover:border-primary-500 transition-colors">
-            <img src={image} alt={name} className="w-full h-full object-cover" />
+        <div className="w-40 h-40 mx-auto mb-8 rounded-[2rem] overflow-hidden border-4 border-primary-50 group-hover:border-primary-500 transition-all duration-500 shadow-lg">
+            <img src={image} alt={name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
         </div>
-        <h3 className="text-xl font-bold mb-1">{name}</h3>
-        <p className="text-primary-600 dark:text-primary-400 font-medium mb-4">{role}</p>
-        <div className="flex justify-center items-center space-x-4 text-gray-500">
-            <a href={`tel:${phone}`} className="hover:text-primary-600"><Phone size={18} /></a>
-            <a href="#" className="hover:text-primary-600"><Mail size={18} /></a>
+        <h3 className="text-2xl font-black mb-1">{name}</h3>
+        <p className="text-primary-600 dark:text-primary-400 font-bold mb-6 text-sm uppercase tracking-widest">{role}</p>
+        <div className="flex justify-center items-center space-x-6 text-gray-400">
+            <a href={`tel:${phone}`} className="p-3 bg-gray-50 dark:bg-dark-bg rounded-2xl hover:bg-primary-600 hover:text-white transition-all shadow-sm">
+                <Phone size={18} />
+            </a>
+            <a href="#" className="p-3 bg-gray-50 dark:bg-dark-bg rounded-2xl hover:bg-primary-600 hover:text-white transition-all shadow-sm">
+                <Mail size={18} />
+            </a>
         </div>
     </motion.div>
 );
 
 const Home = () => {
-    const team = [
-        {
-            name: "Diwas Adhikari",
-            role: "CEO & Founder",
-            phone: "+977-9828745004",
-            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Diwas"
-        },
-        {
-            name: "Prabin Raj Dhungana",
-            role: "CTO & Co-Founder",
-            phone: "+977-9828745004",
-            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Prabin"
-        },
-        {
-            name: "Dinesh Subedi",
-            role: "Finance & Operations",
-            phone: "+977-9828745004",
-            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Dinesh"
-        },
-        {
-            name: "Samip nepal",
-            role: "Marketing Head",
-            phone: "+977-9828745004",
-            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Samip"
-        }
-    ];
+    const [team, setTeam] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchTeam = async () => {
+            try {
+                const { data } = await api.get('/team');
+                setTeam(data);
+                setLoading(false);
+            } catch (error) {
+                console.error(error);
+                setLoading(false);
+            }
+        };
+        fetchTeam();
+    }, []);
 
     return (
         <div>
             <Hero />
-
+            
             {/* Team Section */}
-            <section className="py-24 bg-gray-50 dark:bg-dark-surface/50">
+            <section className="py-32 bg-gray-50 dark:bg-[#080808]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold mb-4">Behind the Brand</h2>
-                        <div className="w-20 h-1.5 bg-primary-600 mx-auto rounded-full"></div>
-                        <p className="mt-6 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                            The visionaries at IOE Pulchowk Campus bringing you the next generation of fashion.
-                        </p>
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+                        <div>
+                            <h2 className="text-5xl md:text-6xl font-black mb-4">Behind the <span className="text-primary-600">Brand</span></h2>
+                            <p className="text-xl text-gray-500 max-w-xl">Meet the visionaries redefining elite streetwear and footwear from Nepal to the world.</p>
+                        </div>
+                        <div className="hidden md:block w-32 h-1 bg-primary-600 rounded-full mb-4"></div>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {team.map((member, i) => (
-                            <TeamMember key={i} {...member} />
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Newsletter */}
-            <section className="py-24">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="glass-card rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
-                        <div className="absolute top-0 left-0 w-32 h-32 bg-primary-500/10 rounded-full -translate-x-1/2 -translate-y-1/2" />
-                        <h2 className="text-4xl font-bold mb-6">Stay Ahead of the Curve</h2>
-                        <p className="text-lg text-gray-600 dark:text-gray-400 mb-10 max-w-lg mx-auto">
-                            Join the 10B newsletter and get exclusive access to drops, sales, and fashion insights.
-                        </p>
-                        <form className="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                className="premium-input flex-1"
-                            />
-                            <button className="btn btn-primary whitespace-nowrap">Subscribe Now</button>
-                        </form>
-                    </div>
+                    
+                    {loading ? (
+                        <div className="flex justify-center py-20">
+                            <Loader2 className="animate-spin text-primary-600" size={48} />
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                            {team.map((member) => (
+                                <TeamMember 
+                                    key={member.id} 
+                                    {...member} 
+                                    phone="+977-9828745004" 
+                                />
+                            ))}
+                        </div>
+                    )}
                 </div>
             </section>
         </div>
